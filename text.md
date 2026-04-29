@@ -21,6 +21,9 @@ You have all three. But you need to stop presenting dbFlow as something you buil
 
 Here is the gap that's making you uncomfortable:---
 
+<img width="756" height="499" alt="image" src="https://github.com/user-attachments/assets/bc833a47-7917-4e2c-a674-d02e924ed8fe" />
+
+
 ## Now let's answer every hard question honestly and confidently
 
 **"How did you get this idea?"**
