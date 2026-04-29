@@ -1,0 +1,157 @@
+
+<style>
+.phase-header{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.phase-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem;margin-bottom:10px}
+.tag{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:20px;margin-right:4px;margin-bottom:4px}
+.tag-purple{background:var(--color-background-info);color:var(--color-text-info)}
+.tag-teal{background:#E1F5EE;color:#085041}
+.tag-amber{background:#FAEEDA;color:#633806}
+.tag-coral{background:#FAECE7;color:#712B13}
+.tag-green{background:#EAF3DE;color:#27500A}
+.milestone{display:flex;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.milestone:last-child{border-bottom:none}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.dot-purple{background:#534AB7}
+.dot-teal{background:#0F6E56}
+.dot-amber{background:#854F0B}
+.dot-coral{background:#993C1D}
+.dot-green{background:#3B6D11}
+.ms-text{font-size:13px;color:var(--color-text-primary);line-height:1.5}
+.ms-sub{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
+.phase-label{font-size:20px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.phase-sub{font-size:12px;color:var(--color-text-secondary);margin-bottom:14px}
+.warn{background:var(--color-background-warning);border:0.5px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:10px 14px;font-size:12px;color:var(--color-text-warning);margin-top:8px}
+</style>
+<h2 class="sr-only">dbFlow 18-month implementation roadmap — four phases from PoC to productization</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:8px;margin-bottom:16px">
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px;text-align:center">
+    <div style="font-size:18px;font-weight:500;color:var(--color-text-primary)">4 phases</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">structured delivery</div>
+  </div>
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px;text-align:center">
+    <div style="font-size:18px;font-weight:500;color:var(--color-text-primary)">18 months</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">to first revenue</div>
+  </div>
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px;text-align:center">
+    <div style="font-size:18px;font-weight:500;color:var(--color-text-primary)">7 roles</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">team needed at peak</div>
+  </div>
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 12px;text-align:center">
+    <div style="font-size:18px;font-weight:500;color:var(--color-text-primary)">€3.5M</div>
+    <div style="font-size:11px;color:var(--color-text-secondary)">year-1 ARR target</div>
+  </div>
+</div>
+
+<div class="phase-card">
+  <div class="phase-header" style="color:#534AB7">Phase 0 — foundation (weeks 1–8) · you, solo</div>
+  <div class="phase-label">The first step you answer with on day one</div>
+  <div class="phase-sub">No new headcount. Leverage your existing Iceberg/Trino/Nessie/Airflow/Ollama stack. Produce a working demo in 8 weeks.</div>
+  <div class="milestone">
+    <div class="dot dot-purple"></div>
+    <div><div class="ms-text">Weeks 1–2 · Data inventory and scoping</div><div class="ms-sub">Identify which internal flow datasets (FX, trade finance, prime brokerage) are already in Iceberg tables. Audit data lineage, PII flags, and classification levels. This is not engineering — it is compliance-first discovery. Output: a one-pager of approved, shareable datasets and their schemas.</div></div>
+  </div>
+  <div class="milestone">
+    <div class="dot dot-purple"></div>
+    <div><div class="ms-text">Weeks 3–4 · Feature store design</div><div class="ms-sub">Design the flow signal schema on top of Iceberg. Each row = a flow event (asset class, direction, notional band, counterparty sector, timestamp). No raw client data. Aggregated at a level that passes data classification. Build the Airflow DAG that populates it daily from source Trino queries.</div></div>
+  </div>
+  <div class="milestone">
+    <div class="dot dot-purple"></div>
+    <div><div class="ms-text">Weeks 5–6 · RAG layer over internal research</div><div class="ms-sub">Use your existing Ollama/Gemma infrastructure. Chunk DB's internal research notes, macro commentary, and sector reports into pgvector. Build a LangChain retrieval chain that takes a natural language query, retrieves relevant flow signal rows + research context, and generates a structured answer. No fine-tuning yet — RAG first.</div></div>
+  </div>
+  <div class="milestone">
+    <div class="dot dot-purple"></div>
+    <div><div class="ms-text">Weeks 7–8 · Live demo interface</div><div class="ms-sub">React frontend, single-page. Left panel: NL query input. Right panel: LLM-generated insight card with sourced flow signals below it. Three canned demo scenarios: (1) "What is the FX positioning in EM currencies this week?", (2) "Show me trade finance flow trends in Asia Pacific", (3) "What are hedge funds doing in European credit?". This is the Innovation World Cup deliverable.</div></div>
+  </div>
+  <div class="warn">First question you will be asked: "Where is this data from and is it approved?" Answer: you audit classification in Week 1 before touching anything. You only use aggregated, non-attributable flow signals — same data DB already publishes in its quarterly flow reports, just queryable in real time.</div>
+</div>
+
+<div class="phase-card">
+  <div class="phase-header" style="color:#0F6E56">Phase 1 — PoC to internal pilot (months 3–6) · you + 2 people</div>
+  <div class="phase-label">Prove it works with a real internal team</div>
+  <div class="phase-sub">Bring in one FIC quant analyst (domain expert) and one ML engineer. Target: 3 internal DB business units using it daily.</div>
+  <div class="milestone">
+    <div class="dot dot-teal"></div>
+    <div><div class="ms-text">Month 3 · First internal pilot — FIC desk</div><div class="ms-sub">Partner with one FX or rates desk. Let traders query the system daily. Collect feedback on signal quality, query latency, and hallucination rate. Define accuracy metrics: does the LLM's answer match what a senior analyst would say? Track weekly.</div></div>
+  </div>
+  <div class="milestone">
+    <div class="dot dot-teal"></div>
+    <div><div class="ms-text">Month 4 · LoRA fine-tuning pipeline</div><div class="ms-sub">Your ML engineer runs LoRA fine-tuning on Gemma using the approved internal research corpus — not raw flow data, but commentary about flows. This tunes the model's financial language without exposing client positions. Infrastructure: GKE job, Hugging Face PEFT library, checkpoint storage on GCS.</div></div>
+  </div>
+  <div class="milestone">
+    <div class="dot dot-teal"></div>
+    <div><div class="ms-text">Month 5 · Multi-asset expansion</div><div class="ms-sub">Extend the feature store from FX-only to trade finance and correspondent banking flows. Each asset class needs its own Iceberg partition scheme and Airflow DAG. The quant analyst owns the signal logic; you own the pipeline. Output: 3 asset class modules queryable from the same interface.</div></div>
+  </div>
+  <div class="milestone">
+    <div class="dot dot-teal"></div>
+    <div><div class="ms-text">Month 6 · Pilot review and architecture sign-off</div><div class="ms-sub">Present pilot results to DB architecture board (you already have a relationship from the RCA approval). Metrics to show: query volume, answer accuracy rate, time-to-insight vs manual research, NPS from pilot traders. Get formal sign-off to proceed to external pilot.</div></div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+    <span class="tag tag-purple">You — platform architect + product lead</span>
+    <span class="tag tag-teal">FIC quant analyst — domain validation</span>
+    <span class="tag tag-amber">ML engineer — fine-tuning + inference</span>
+  </div>
+</div>
+
+<div class="phase-card">
+  <div class="phase-header" style="color:#854F0B">Phase 2 — external alpha (months 7–12) · you + 5 people</div>
+  <div class="phase-label">First paying client. Real revenue signal.</div>
+  <div class="phase-sub">Add compliance, API, and client-facing layers. Target: 3 paying external clients (2 hedge funds, 1 corporate treasury) generating first ARR.</div>
+  <div class="milestone">
+    <div class="dot dot-amber"></div>
+    <div><div class="ms-text">Month 7–8 · Compliance and data governance layer</div><div class="ms-sub">This is the hardest non-technical step. Work with DB Legal and Data Governance to classify each flow signal type under MiFID II. Instrument data lineage end-to-end using your Nessie catalog — every signal row must be traceable to its source. Build consent framework: which data can be shared externally, under what license terms.</div></div>
+  </div>
+  <div class="milestone">
+    <div class="dot dot-amber"></div>
+    <div><div class="ms-text">Month 9 · External API layer</div><div class="ms-sub">Build a rate-limited REST + WebSocket API gateway on GKE. Multi-tenant auth (OAuth2 + API keys). Per-client namespace isolation. Rate limiting by tier (Tier 1 = 100 queries/day, Tier 2 = unlimited with SLA). Python SDK wrapping the REST API — this is what hedge fund quant teams will actually use. OpenAPI spec auto-generated from FastAPI.</div></div>
+  </div>
+  <div class="milestone">
+    <div class="dot dot-amber"></div>
+    <div><div class="ms-text">Month 10–11 · Alpha client onboarding</div><div class="ms-sub">DB's IB client coverage team introduces dbFlow to 5 hedge fund contacts. You (as product lead) do the technical demo. First 3 clients get 90-day free access in exchange for weekly feedback sessions. You are measuring: which query types generate the most value, what data is missing, what the willingness-to-pay signals look like.</div></div>
+  </div>
+  <div class="milestone">
+    <div class="dot dot-amber"></div>
+    <div><div class="ms-text">Month 12 · First paid contracts</div><div class="ms-sub">Convert 2–3 alpha clients to paid Tier 1 or Tier 2 subscriptions. $50k–$200k/yr each. This is the moment the idea becomes a business. Revenue is proof. Everything before this is cost.</div></div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+    <span class="tag tag-purple">You — product lead + external face</span>
+    <span class="tag tag-teal">FIC quant (x2) — signal quality</span>
+    <span class="tag tag-amber">ML engineer — inference + fine-tuning</span>
+    <span class="tag tag-coral">Compliance specialist — MiFID II, data licensing</span>
+    <span class="tag tag-green">Backend engineer — API gateway, SDK</span>
+  </div>
+</div>
+
+<div class="phase-card">
+  <div class="phase-header" style="color:#3B6D11">Phase 3 — productization and scale (months 13–18) · full team</div>
+  <div class="phase-label">From product to platform. From 3 clients to 30.</div>
+  <div class="phase-sub">Dedicated team of 7+. Self-service onboarding. Automated billing. SLA-backed. €20M ARR trajectory.</div>
+  <div class="milestone">
+    <div class="dot dot-green"></div>
+    <div><div class="ms-text">Month 13–14 · Self-service client portal</div><div class="ms-sub">React dashboard: API key management, query usage analytics, signal module selection, billing portal. Clients can onboard without a DB relationship manager. This removes the human bottleneck that limits scale.</div></div>
+  </div>
+  <div class="milestone">
+    <div class="dot dot-green"></div>
+    <div><div class="ms-text">Month 15 · Bespoke Tier 3 delivery</div><div class="ms-sub">For SWF-level clients: LoRA fine-tune a custom model slice on the flow data most relevant to their strategy (e.g. EM currency flows for a Gulf SWF). Dedicated GKE namespace, dedicated model endpoint, 99.9% SLA. This is the $1–5M/yr tier.</div></div>
+  </div>
+  <div class="milestone">
+    <div class="dot dot-green"></div>
+    <div><div class="ms-text">Month 16–18 · Monetization flywheel</div><div class="ms-sub">Each new client's usage data improves the model's understanding of what signals matter. Usage analytics feed back into the feature store — if 30 hedge funds all query EM FX at the same time, that pattern itself is a signal. Build the feedback loop that makes dbFlow smarter with scale, not just bigger.</div></div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+    <span class="tag tag-purple">You — VP Product / Chief Architect</span>
+    <span class="tag tag-teal">FIC quants (x2)</span>
+    <span class="tag tag-amber">ML engineers (x2)</span>
+    <span class="tag tag-coral">Compliance + legal</span>
+    <span class="tag tag-green">Backend engineers (x2)</span>
+    <span class="tag tag-purple">Frontend + UX</span>
+    <span class="tag tag-teal">Client success manager</span>
+  </div>
+</div>
+
+<div style="margin-top:4px;display:flex;gap:8px;flex-wrap:wrap">
+  <button onclick="sendPrompt('What are the exact MiFID II rules that apply to selling Deutsche Bank flow data externally — what classification steps are needed?')">MiFID II compliance deep-dive ↗</button>
+  <button onclick="sendPrompt('Write the Week 1 action plan for dbFlow — exactly what I do on the first Monday after approval')">Week 1 action plan ↗</button>
+  <button onclick="sendPrompt('How do I design the dbFlow Iceberg feature store schema for FX flow signals — give me the exact table structure')">Feature store schema ↗</button>
+  <button onclick="sendPrompt('Write the 5-minute Innovation World Cup pitch script for dbFlow with the demo walkthrough')">Write the pitch script ↗</button>
+</div>

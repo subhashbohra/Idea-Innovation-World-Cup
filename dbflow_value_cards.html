@@ -1,0 +1,55 @@
+
+<h2 class="sr-only">dbFlow business value — bank benefits, developer opportunities, and competitive moat</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:12px;padding:1rem 0">
+
+<div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem">
+  <div style="font-size:11px;font-weight:500;color:var(--color-text-success);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Bank — revenue</div>
+  <div style="font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px">€200M+</div>
+  <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5">Estimated annual data subscription revenue at 100 institutional clients. Comparable: Bloomberg charges $25k/user/yr. Goldman Marquee is estimated at $400M+ ARR.</div>
+</div>
+
+<div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem">
+  <div style="font-size:11px;font-weight:500;color:var(--color-text-info);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Bank — strategic moat</div>
+  <div style="font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px">Irreplicable</div>
+  <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5">DB processes trillions in FX daily via Autobahn. Hedge funds, SWFs, and corporate treasuries will pay a premium for real-money flow signals that no LLM trained on public data can provide.</div>
+</div>
+
+<div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem">
+  <div style="font-size:11px;font-weight:500;color:var(--color-text-warning);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Bank — client stickiness</div>
+  <div style="font-size:22px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px">Deep lock-in</div>
+  <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.5">Once a hedge fund builds trading models on DB flow signals, switching cost is extremely high. This transforms transactional IB relationships into sticky recurring SaaS-like contracts.</div>
+</div>
+
+</div>
+
+<div style="background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-top:4px">
+  <div style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:12px">Developer opportunities on dbFlow</div>
+  <div style="display:grid;gap:10px">
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <div style="width:8px;height:8px;border-radius:50%;background:#1D9E75;margin-top:5px;flex-shrink:0"></div>
+      <div><span style="font-size:13px;font-weight:500;color:var(--color-text-primary)">Flow data pipeline engineer</span><span style="font-size:13px;color:var(--color-text-secondary)"> — extend your existing Iceberg/Trino/Airflow work to build real-time flow feature stores for LLM fine-tuning. The pipeline you've already built is 70% of what's needed.</span></div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <div style="width:8px;height:8px;border-radius:50%;background:#1D9E75;margin-top:5px;flex-shrink:0"></div>
+      <div><span style="font-size:13px;font-weight:500;color:var(--color-text-primary)">LLM fine-tuning lead</span><span style="font-size:13px;color:var(--color-text-secondary)"> — adapt DB's existing Gemma/Ollama infrastructure (your RCA work) to financial domain fine-tuning. LoRA fine-tuning on proprietary flow data, air-gap compliant on GKE.</span></div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <div style="width:8px;height:8px;border-radius:50%;background:#1D9E75;margin-top:5px;flex-shrink:0"></div>
+      <div><span style="font-size:13px;font-weight:500;color:var(--color-text-primary)">API platform architect</span><span style="font-size:13px;color:var(--color-text-secondary)"> — design the external REST/WebSocket API gateway, SDK packaging, and rate-limited multi-tenant auth layer on GKE. Standard gateway-pattern work elevated to a revenue product.</span></div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <div style="width:8px;height:8px;border-radius:50%;background:#1D9E75;margin-top:5px;flex-shrink:0"></div>
+      <div><span style="font-size:13px;font-weight:500;color:var(--color-text-primary)">RAG / vector search engineer</span><span style="font-size:13px;color:var(--color-text-secondary)"> — build pgvector-powered retrieval over DB's institutional knowledge base (research reports, trade analytics). Extends dbLumina's existing RAG stack to client-facing context.</span></div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:flex-start">
+      <div style="width:8px;height:8px;border-radius:50%;background:#1D9E75;margin-top:5px;flex-shrink:0"></div>
+      <div><span style="font-size:13px;font-weight:500;color:var(--color-text-primary)">Frontend / conversational UI</span><span style="font-size:13px;color:var(--color-text-secondary)"> — build the client-facing natural language query interface. React-based, embedded as a widget in existing client portals. The live demo for Innovation World Cup is this interface.</span></div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+  <button onclick="sendPrompt('Build a demo architecture for dbFlow Innovation World Cup — what would a 2-week live LLM demo look like?')">Demo architecture for World Cup ↗</button>
+  <button onclick="sendPrompt('What is Goldman Sachs Marquee and how does dbFlow compare — strengths and gaps?')">vs Goldman Marquee ↗</button>
+  <button onclick="sendPrompt('What regulatory approvals would dbFlow need inside Deutsche Bank — data privacy, MiFID II, client consent?')">Regulatory path ↗</button>
+</div>
